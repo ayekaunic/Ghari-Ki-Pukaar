@@ -22,8 +22,8 @@ def print_time_left(seconds_to_print):
 
 
 def sound_random_alarm():
-    # random_alarm = random.choice(['alarm1.mp3', 'alarm2.mp3', 'alarm3.mp3', 'alarm4.mp3', 'alarm5.mp3'])
-    playsound('alarm3.mp3')
+    random_alarm = random.choice(['alarm1.mp3', 'alarm2.mp3', 'alarm3.mp3', 'alarm4.mp3', 'alarm5.mp3'])
+    playsound(random_alarm)
     print(CLEAR)
 
 
