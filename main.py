@@ -1,6 +1,7 @@
 import time
 from playsound import playsound
 import random
+import datetime
 
 CLEAR = "\033[2J"
 CLEAR_AND_RETURN = "\033[H"
@@ -21,8 +22,8 @@ def print_time_left(seconds_to_print):
 
 
 def sound_random_alarm():
-    random_alarm = random.choice(['alarm1.mp3', 'alarm2.mp3', 'alarm3.mp3', 'alarm4.mp3', 'alarm5.mp3'])
-    playsound(random_alarm)
+    # random_alarm = random.choice(['alarm1.mp3', 'alarm2.mp3', 'alarm3.mp3', 'alarm4.mp3', 'alarm5.mp3'])
+    playsound('alarm3.mp3')
     print(CLEAR)
 
 
@@ -36,6 +37,25 @@ def timer():
     sound_random_alarm()
 
 
+def alarm():
+    hours = int(input('hour (0-23): '))
+    minutes = int(input('minutes (0-59): '))
+    go_off_time = datetime.datetime(year=datetime.datetime.now().year, month=datetime.datetime.now().month, day=datetime.datetime.now().day, hour=hours, minute=minutes)
+    seconds_left = (go_off_time-datetime.datetime.now()).seconds
+    print(f"{CLEAR}")
+    print_time_left(seconds_left)
+    sound_random_alarm()
+
+
 print(f"{CLEAR}")
 print(f"{CLEAR_AND_RETURN}")
-timer()
+
+choice = int(input('enter (1) for timer or (2) for alarm: '))
+if choice == 1:
+    timer()
+elif choice == 2:
+    alarm()
+else:
+    print(f"{CLEAR}")
+    print(f"{CLEAR_AND_RETURN}")
+    print('invalid choice\n')
